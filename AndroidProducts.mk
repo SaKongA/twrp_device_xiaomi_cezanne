@@ -5,4 +5,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/twrp_cezanne.mk
+    $(LOCAL_DIR)/twrp_cezanne.mk    twrp_cezanne-eng	
