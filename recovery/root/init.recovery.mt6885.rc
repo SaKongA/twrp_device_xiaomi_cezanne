@@ -1,24 +1,24 @@
-import /init.recovery.teei_daemon.rc
+import /microtrust.rc
 
 on init
     # Create a more standard /dev/block layout for our scripts
     symlink /dev/block/platform/bootdevice /dev/block/bootdevice
-    export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw
-on fs
+    mkdir /mnt/vendor/persist 0700 root root
+    mount ext4 /dev/block/platform/bootdevice/by-name/persist /mnt/vendor/persist
 
-
-    install_keyring
+on boot
+    start health-hal-2-0
 
 service keystore_auth /system/bin/keystore_auth
     oneshot
-    user system
+    user root
     group root
     disabled
     seclabel u:r:recovery:s0
 
 service keystore /system/bin/keystore /tmp/misc/keystore
     user root
-    group root drmrpc readproc log
+    group root drmrpc readproc
     disabled
     seclabel u:r:recovery:s0
 
@@ -26,46 +26,22 @@ service gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service
     user root
     group root
     disabled
-    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib64/hw:/system/lib64:/sbin
     seclabel u:r:recovery:s0
 
 service keymaster-4-0 /vendor/bin/hw/android.hardware.keymaster@4.0-service.beanpod
     user root
     group root drmrpc
     disabled
-    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib64/hw:/system/lib64:/system/lib64:/sbin
     seclabel u:r:recovery:s0
 
-on property:ro.crypto.type=file
-    setprop ro.crypto.state encrypted
-    setprop twrp.apex.loaded true
-
-
-on property:vendor.sys.listener.registered=true
-    start keymaster-4-0
+on property:ro.crypto.state=encrypted && property:ro.crypto.type=file
+    install_keyring
 
 on property:hwservicemanager.ready=true
-    write /proc/bootprof "start teei_daemon (on fs)"
-    start teei_daemon
-    write /proc/bootprof "start teei_daemon end (on fs)"
     start keymaster-4-0
     start gatekeeper-1-0
 
-on property:ro.crypto.state=unsupported
-    stop teei_daemon
-    stop keymaster-4-0
-    stop gatekeeper-1-0
-    stop servicemanager
-    stop hwservicemanager
-
-on property:ro.crypto.state=unencrypted
-    stop teei_daemon
-    stop keymaster-4-0
-    stop gatekeeper-1-0
-    stop servicemanager
-    stop hwservicemanager
-
-on property:twrp.decrypt.done=true
+on property:twrp.decrypt.done=true && property:twrp.all.users.decrypted=true
     stop teei_daemon
     stop keymaster-4-0
     stop gatekeeper-1-0

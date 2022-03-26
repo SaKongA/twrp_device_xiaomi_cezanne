@@ -1,7 +1,7 @@
 <!--
     Input:
-        manifest_displayfeature.xml
         manifest.xml
+        manifest_displayfeature.xml
         manifest_wechat.xml
         manifest_apuware_vpu.xml
         manifest_apuware_apusys.xml
@@ -74,12 +74,12 @@
     <hal format="hidl">
         <name>android.hardware.camera.provider</name>
         <transport>hwbinder</transport>
-        <version>2.4</version>
+        <version>2.6</version>
         <interface>
             <name>ICameraProvider</name>
             <instance>internal/0</instance>
         </interface>
-        <fqname>@2.4::ICameraProvider/internal/0</fqname>
+        <fqname>@2.6::ICameraProvider/internal/0</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.configstore</name>
@@ -126,12 +126,12 @@
     <hal format="hidl">
         <name>android.hardware.graphics.composer</name>
         <transport>hwbinder</transport>
-        <version>2.2</version>
+        <version>2.1</version>
         <interface>
             <name>IComposer</name>
             <instance>default</instance>
         </interface>
-        <fqname>@2.2::IComposer/default</fqname>
+        <fqname>@2.1::IComposer/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.graphics.mapper</name>
@@ -324,12 +324,12 @@
     <hal format="hidl">
         <name>android.hardware.vibrator</name>
         <transport>hwbinder</transport>
-        <version>1.2</version>
+        <version>1.0</version>
         <interface>
             <name>IVibrator</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.2::IVibrator/default</fqname>
+        <fqname>@1.0::IVibrator/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.mediatek.hardware.aee</name>
@@ -709,16 +709,6 @@
         <fqname>@1.0::IDisplayFeature/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>vendor.xiaomi.hardware.motor</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IMotor</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.0::IMotor/default</fqname>
-    </hal>
-    <hal format="hidl">
         <name>vendor.xiaomi.hardware.touchfeature</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -727,16 +717,6 @@
             <instance>default</instance>
         </interface>
         <fqname>@1.0::ITouchFeature/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.xiaomi.hardware.vibratorfeature</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IVibratorFeature</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.0::IVibratorFeature/default</fqname>
     </hal>
     <sepolicy>
         <version>30.0</version>
