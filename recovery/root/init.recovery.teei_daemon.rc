@@ -35,8 +35,8 @@ on boot
     chown system system /sys/bus/platform/devices/utos/notify_ree_dci_handler
 
 #for All mode
-on load_persist_props_action
-    write /proc/bootprof "start teei cfg (on load_persist_props_action)"
+on post-fs-data
+    write /proc/bootprof "start teei cfg (on post fs data)"
     mkdir /data/vendor/thh
     mkdir /data/vendor/thh/system
     mkdir /data/vendor/thh/tee_00
@@ -108,82 +108,7 @@ on load_persist_props_action
     restorecon_recursive /data/vendor/thh
     chmod 0771 /data/vendor/key_provisioning
     chown system system /data/vendor/key_provisioning
-    write /proc/bootprof "start teei cfg end (on load_persist_props_action)"
-
-on property:crypto.ready=1
-    write /proc/bootprof "start teei cfg (on trigger_restart_framework)"
-    mkdir /data/vendor/thh
-    mkdir /data/vendor/thh/system
-    mkdir /data/vendor/thh/tee_00
-    mkdir /data/vendor/thh/tee_01
-    mkdir /data/vendor/thh/tee_02
-    mkdir /data/vendor/thh/tee_03
-    mkdir /data/vendor/thh/tee_04
-    mkdir /data/vendor/thh/tee_05
-    mkdir /data/vendor/thh/tee_06
-    mkdir /data/vendor/thh/tee_07
-    mkdir /data/vendor/thh/tee
-    mkdir /data/vendor/thh/tee/tas
-    mkdir /data/vendor/thh/tee_08
-    mkdir /data/vendor/thh/tee_09
-    mkdir /data/vendor/thh/tee_0A
-    mkdir /data/vendor/thh/tee_0B
-    mkdir /data/vendor/thh/tee_0C
-    mkdir /data/vendor/thh/tee_0D
-    mkdir /data/vendor/thh/tee_0E
-    mkdir /data/vendor/thh/tee_0F
-    mkdir /data/vendor/thh/ta
-    mkdir /data/vendor/key_provisioning
-    mkdir /data/vendor/thh/tee_log
-    chmod 0755 /data/vendor/thh
-    chown system system /data/vendor/thh
-    chmod 0755 /data/vendor/thh/tee_00
-    chown system system /data/vendor/thh/tee_00
-    chmod 0755 /data/vendor/thh/tee_01
-    chown system system /data/vendor/thh/tee_01
-    chmod 0755 /data/vendor/thh/tee_02
-    chown system system /data/vendor/thh/tee_02
-    chmod 0755 /data/vendor/thh/tee_03
-    chown system system /data/vendor/thh/tee_03
-    chmod 0755 /data/vendor/thh/tee_04
-    chown system system /data/vendor/thh/tee_04
-    chmod 0755 /data/vendor/thh/tee_05
-    chown system system /data/vendor/thh/tee_05
-
-    chmod 0755 /data/vendor/thh/tee_06
-    chown system system /data/vendor/thh/tee_06
-    chmod 0755 /data/vendor/thh/tee_07
-    chown system system /data/vendor/thh/tee_07
-    chmod 0755 /data/vendor/thh/tee
-    chown system system /data/vendor/thh/tee
-    chmod 0755 /data/vendor/thh/tee/tas
-    chown system system /data/vendor/thh/tee/tas
-    chmod 0755 /data/vendor/thh/tee_08
-    chown system system /data/vendor/thh/tee_08
-    chmod 0755 /data/vendor/thh/tee_09
-    chown system system /data/vendor/thh/tee_09
-    chmod 0755 /data/vendor/thh/tee_0A
-    chown system system /data/vendor/thh/tee_0A
-    chmod 0755 /data/vendor/thh/tee_0B
-    chown system system /data/vendor/thh/tee_0B
-    chmod 0755 /data/vendor/thh/tee_0C
-    chown system system /data/vendor/thh/tee_0C
-    chmod 0755 /data/vendor/thh/tee_0D
-    chown system system /data/vendor/thh/tee_0D
-    chmod 0755 /data/vendor/thh/tee_0E
-    chown system system /data/vendor/thh/tee_0E
-    chmod 0755 /data/vendor/thh/tee_0F
-    chown system system /data/vendor/thh/tee_0F
-    chmod 0755 /data/vendor/thh/tee_log
-    chown system system /data/vendor/thh/tee_log
-    chmod 0755 /data/vendor/thh/ta
-    chown system system /data/vendor/thh/ta
-    chmod 0755 /data/vendor/thh/system
-    chown system system /data/vendor/thh/system
-    chmod 0771 /data/vendor/key_provisioning
-    chown system system /data/vendor/key_provisioning
-    restorecon_recursive /data/vendor/thh
-    write /proc/bootprof "start teei cfg end (on trigger_restart_framework)"
+    write /proc/bootprof "start teei cfg end (on post-fs-data)"
 
 on post-fs
     # Set /mnt/vendor/persist/rpmb
@@ -234,6 +159,3 @@ on fs
 
 on property:vendor.crypto.fake_encrypt=1 && property:vold.post_fs_data_done=1
     setprop vendor.soter.teei.crypto.state unencrypted
-
-on post-fs-data
-	setprop vendor.soter.teei.logini "start"

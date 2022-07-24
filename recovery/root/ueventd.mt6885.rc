@@ -11,25 +11,25 @@
 /dev/block/sdc                                   0660    root    system
 
 # eMMC/UFS common
-/dev/block/by-name/misc2     0660    root    system
-/dev/block/by-name/boot      0640    root    system
-/dev/block/by-name/recovery  0640    root    system
-/dev/block/by-name/secro     0640    root    system
-/dev/block/by-name/seccfg    0660    root    system
-/dev/block/by-name/proinfo   0660    root    system
-/dev/block/by-name/nvram     0660    root    system
-/dev/block/by-name/para      0660    root    system
-/dev/block/by-name/logo      0660    root    system
-/dev/block/by-name/frp       0660    root    system
-/dev/block/by-name/md1img    0640    root    system
-/dev/block/by-name/md1img_a  0640    root    system
-/dev/block/by-name/md1img_b  0640    root    system
-/dev/block/by-name/md1dsp    0660    root    system
-/dev/block/by-name/boot_para 0640    root    system
+/dev/block/platform/bootdevice/by-name/misc2     0660    root    system
+/dev/block/platform/bootdevice/by-name/boot      0640    root    system
+/dev/block/platform/bootdevice/by-name/recovery  0640    root    system
+/dev/block/platform/bootdevice/by-name/secro     0640    root    system
+/dev/block/platform/bootdevice/by-name/seccfg    0660    root    system
+/dev/block/platform/bootdevice/by-name/proinfo   0660    root    system
+/dev/block/platform/bootdevice/by-name/nvram     0660    root    system
+/dev/block/platform/bootdevice/by-name/para      0660    root    system
+/dev/block/platform/bootdevice/by-name/logo      0660    root    system
+/dev/block/platform/bootdevice/by-name/frp       0660    root    system
+/dev/block/platform/bootdevice/by-name/md1img    0640    root    system
+/dev/block/platform/bootdevice/by-name/md1img_a  0640    root    system
+/dev/block/platform/bootdevice/by-name/md1img_b  0640    root    system
+/dev/block/platform/bootdevice/by-name/md1dsp    0660    root    system
+/dev/block/platform/bootdevice/by-name/boot_para 0640    root    system
 
 # OTP
 /dev/otp                  0660   system     system
-/dev/block/by-name/otp       0660    root    system
+/dev/block/platform/bootdevice/by-name/otp       0660    root    system
 
 # Connectivity
 /dev/stpwmt               0660   system     system
@@ -46,7 +46,6 @@
 /dev/gpsdl1               0660   gps        gps
 /dev/stpgps               0660   gps        gps
 /dev/gps                  0660   gps        system
-/dev/fw_log_gps           0660   gps        gps
 /dev/gps_emi              0660   gps        gps
 
 # ANT
@@ -60,8 +59,6 @@
 /dev/fm                   0660   media     media
 
 # NFC
-/dev/msr3110              0666   root       root
-/dev/mt6605               0660   nfc        radio
 /dev/st21nfc              0660   nfc        radio
 /dev/st54spi              0660   secure_element        secure_element
 
@@ -93,6 +90,9 @@
 
 # DRM node
 /dev/dri/card0            0660   system     system
+
+# MDDP node
+/dev/mddp                 0660   system     system
 
 # add the read write right of ttyUSB*
 /dev/bus/usb/*     	  0660   root       usb
@@ -134,6 +134,18 @@
 /sys/devices/platform/leds-mt65xx/leds/red   delay_off      0664  system   system
 /sys/devices/platform/leds-mt65xx/leds/blue   delay_on      0664  system   system
 /sys/devices/platform/leds-mt65xx/leds/blue   delay_off      0664  system   system
+/sys/class/leds/red            delay_on     0640    system    system
+/sys/class/leds/red            delay_off    0640    system    system
+/sys/class/leds/green          delay_on     0640    system    system
+/sys/class/leds/green          delay_off    0640    system    system
+/sys/class/leds/blue           delay_on     0640    system    system
+/sys/class/leds/blue           delay_off    0640    system    system
+/sys/class/leds/red-right      delay_on     0640    system    system
+/sys/class/leds/red-right      delay_off    0640    system    system
+/sys/class/leds/green-right    delay_on     0640    system    system
+/sys/class/leds/green-right    delay_off    0640    system    system
+/sys/class/leds/blue-right     delay_on     0640    system    system
+/sys/class/leds/blue-right     delay_off    0640    system    system
 
 #GPIO
 /dev/mtgpio               0600   radio      root
@@ -154,11 +166,10 @@
 #touch
 /dev/touch                0660   root       system
 /dev/hotknot              0660   root       system
-/dev/tll                  0660   root       system
 
 #hang_detect
-/dev/RT_Monitor           0600   system     system
-/dev/kick_powerkey        0600   system     system
+/dev/RT_Monitor           0660   system     system
+/dev/kick_powerkey        0660   system     system
 
 #MTK In-House TEE
 /dev/ttyACM0              0660   radio      radio
