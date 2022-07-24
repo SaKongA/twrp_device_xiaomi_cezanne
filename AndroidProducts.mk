@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2021 The OmniRom Project
+# Copyright (C) 2022 The OmniRom Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #

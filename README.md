@@ -1,4 +1,4 @@
-Copyright (C) 2020 PixelExperience Plus Edition
+Copyright (C) 2022 PixelExperience Plus Edition
 
 Device configuration for Redmi K30 Ultra
 
