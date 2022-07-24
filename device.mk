@@ -9,11 +9,8 @@ LOCAL_PATH := device/xiaomi/cezanne
 # Dynamic Partition
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
-# fastbootd
-PRODUCT_PACKAGES += \
-    android.hardware.fastboot@1.0-impl-mock \
-    android.hardware.fastboot@1.0-impl-mock.recovery \
-    fastbootd
+# Fastbootd
+TW_INCLUDE_FASTBOOTD := true
 
 # Dynamic
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
