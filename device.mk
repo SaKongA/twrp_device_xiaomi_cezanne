@@ -6,6 +6,10 @@
 
 LOCAL_PATH := device/xiaomi/cezanne
 
+# API
+PRODUCT_TARGET_VNDK_VERSION := 31
+PRODUCT_SHIPPING_API_LEVEL := 29
+
 # Dynamic Partition
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 

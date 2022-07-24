@@ -129,7 +129,6 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
 
 # Crypto
 TW_INCLUDE_CRYPTO := true
-TW_INCLUDE_CRYPTO_FBE := true
 
 # Additional binaries & libraries needed for recovery
 TARGET_RECOVERY_DEVICE_MODULES += \
