@@ -38,15 +38,13 @@ export FOX_USE_NANO_EDITOR=1
 export OF_ENABLE_LPTOOLS=1
 
 ## 硬件功能设定
-# 没有绿色led
-export OF_USE_GREEN_LED=0
-# 关闭闪光灯功能
-export OF_FLASHLIGHT_ENABLE=0
-# 自定义闪光灯路径，修复闪光灯
-# export OF_FL_PATH1=/sys/class/leds/torch-light0
-# export OF_FL_PATH2=/sys/class/leds/torch-light1
-# 橙狐只支持两个闪光灯路径变量，但是这个手机有3个,其实有一个就行了，这个无实际用途
-# export OF_FL_PATH3=/sys/class/leds/torch-light2
+# LED灯[1开，0关]
+export OF_USE_GREEN_LED=1
+# 闪光灯功能[1开，0关]
+export OF_FLASHLIGHT_ENABLE=1
+# 闪光灯节点，OF只支持2个(cezanne有0,1,2)
+export OF_FL_PATH1=/sys/class/leds/torch-light0
+export OF_FL_PATH2=/sys/class/leds/torch-light1
 
 ## 界面显示设定
 # 设置屏幕高度，状态栏高度，状态栏左右边距
