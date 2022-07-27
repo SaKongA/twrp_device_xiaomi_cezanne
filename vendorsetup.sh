@@ -12,7 +12,7 @@ export ALLOW_MISSING_DEPENDENCIES=true
 echo -e "\x1b[96mcezanne: 开始添加OrangeFox Vars...\x1b[m"
 ## 构建信息
 # 设置显示在关于页面里的维护人员名称
-export OF_MAINTAINER=AneglaCool,ymdzq,ZhcnPanda
+export OF_MAINTAINER=Panda,Cool,ymdzq
 # 设置版本号为日期
 export FOX_VERSION=$(date +%y.%m.%d)
 
